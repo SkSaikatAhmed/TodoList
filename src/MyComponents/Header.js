@@ -2,23 +2,27 @@ import React, {useState, useEffect} from 'react';
 import './Header.css'
 // import PropTypes from 'prop-types';
 
-function Header(props) {
-  const [count, setCount] = useState(0);
-  useEffect(()=> {
-    document.title = `You Clickes ${count} times`;
-  }, [count]);
+function Header() {
+  const [name, setName] = useState("");
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    alert(`Hello, ${name}`);
+  };
 
-  const increment = () => setCount(count+1);
-  const reset = () => setCount(0);
-  const decrement = () => setCount(count-1);
   return (
-    <div className='counter-card'>
-      <p>Count: {count}</p>
-      <button onClick={increment}>Increment</button>
-      <button onClick={reset} style={{marginLeft: '10px'}}>Reset</button>
-      <button onClick={decrement} disabled={count===0} style={{marginLeft: '10px'}}>Decrement</button>
-    </div>
-  )
+    <form onSubmit={handleSubmit}>
+      <h2>Simple Form</h2>
+      <input
+        type="text"
+        placeholder='Enter Your Name'
+        value={name}
+        onChange={(e)=>setName(e.target.value)}
+       />
+       <br></br>
+       <button type='submit'>Submit</button>
+
+    </form>
+  );
 }
 
 export default Header;
