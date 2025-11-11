@@ -7,6 +7,10 @@ export default function Todo() {
   const addTodo = (newTask) => {
     setTodos([...todos, newTask]);
   };
+  const deleteTodo = (indexToDelete)=>{
+    const updatedTodos = todos.filter((_, index) => index !== indexToDelete);
+    setTodos(updatedTodos);
+  }
 
 
   return (
@@ -16,7 +20,10 @@ export default function Todo() {
         <ol>
             {
                 todos.map((todo, index)=>(
-                    <li key={index}>{todo}</li>
+                    <li key={index}>
+                        {todo}
+                        <button onClick={()=> deleteTodo(index)}>Delete</button>
+                    </li>
                 ))
             }
         </ol>
