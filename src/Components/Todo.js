@@ -7,10 +7,13 @@ export default function Todo() {
   const addTodo = (newTask) => {
     setTodos([...todos, newTask]);
   };
+
   const deleteTodo = (indexToDelete)=>{
     const updatedTodos = todos.filter((_, index) => index !== indexToDelete);
     setTodos(updatedTodos);
-  }
+  };
+
+
 
 
   return (
@@ -21,8 +24,9 @@ export default function Todo() {
             {
                 todos.map((todo, index)=>(
                     <li key={index}>
-                        {todo}
-                        <button onClick={()=> deleteTodo(index)}>Delete</button>
+                    <input style={{marginLeft: '10px'}} type='checkbox'/>
+                    {todo}
+                    <button style={{marginLeft: '20px'}} onClick={()=> deleteTodo(index)}>Delete</button>
                     </li>
                 ))
             }
